@@ -52,3 +52,5 @@ This repository serves as a template for Python projects. It provides a structur
 
 10. **Continuous Integration (CI) Pipeline:**
     Set up a GitHub Actions workflow to create an automated pipeline triggered by pushes and pulls.
+
+[![CI Pipeline](https://github.com/0Mr-Panda0/Python-Template-Project/actions/workflows/main.yaml/badge.svg)](https://github.com/0Mr-Panda0/Python-Template-Project/actions/workflows/main.yaml)
