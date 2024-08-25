@@ -1,5 +1,5 @@
 install:
-	python.exe -m pip install --upgrade pip && pip install --upgrade pip && pip install -r requirements.txt
+	pip install --upgrade pip && pip install -r requirements.txt
 
 test:
 	python -m pytest -vv --cov=greetings test_greetings.py
