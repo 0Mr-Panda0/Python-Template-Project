@@ -12,11 +12,17 @@ jobs:
     
     steps:
       - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: install invoke
+        run: pip install invoke
       - name: install packages
-        run: make install
+        run: invoke install
       - name: lint
-        run: make lint
+        run: invoke lint
       - name: test
-        run: make test
+        run: invoke test
       - name: format
-        run: make format
+        run: invoke format
