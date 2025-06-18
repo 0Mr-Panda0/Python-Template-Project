@@ -1,6 +1,6 @@
-def hello(name):
+def hello(name: str) -> str:
     return f"Hello, {name}!"
 
 
 if __name__ == "__main__":
-    hello(input("Enter your name: "))
+    print(hello(input("Enter your name: ")))
