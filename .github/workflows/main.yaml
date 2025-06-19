@@ -22,16 +22,13 @@ jobs:
         enable-cache: true
 
     - name: Install dependencies
-      run: uv sync
+      run: uv run invoke manage-dependency
 
     - name: Lint and format with ruff
-      run: |
-        uv run ruff check .
-        uv run ruff check --fix .
-        uv run ruff format .
+      run: uv run invoke lint-and-format-code
 
     - name: Run type checks with mypy
-      run: uv run mypy .
+      run: uv run invoke type-hints-check
 
     - name: Run tests with pytest
-      run: uv run pytest --cov=src
+      run: uv run invoke run-tests

@@ -4,62 +4,56 @@ This repository serves as a template for Python projects. It provides a structur
 
 ## Getting Started
 
-1. **Create a Codespace:**
-   Set up a new codespace for your project.
-
-2. **Create a Virtual Environment:**
-   In the terminal, run the following commands:
-
-   Linux:
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate
+1. **Installing uv for python project management:**
+   ```
+   winget install --id=astral-sh.uv  -e
    ```
 
-   Windows:
-   ```bash
-   python -m venv .venv
-   .venv/Script/Activate.ps1
+2. **Create a Codespace:**
+   Set up a new codespace for your project by
+   ```
+   uv init <name_of_project>
    ```
 
-3. **Write Your Code:**
+3. **Adding packages to the project:**
+   In the terminal, run the following command:
+
+   ```bash
+   uv add <package_name>
+   ```
+
+4. **Write Your Code:**
    Develop your project code within the virtual environment.
-
-4. **Essential Files:**
-   Create the following essential files for any Python project:
-   - `requirements.txt`
-   - `tasks.py`
-   - `tests`
 
 5. **Add Testing Code:**
    Write your testing code to ensure code quality.
 
-6. **Requirements File:**
-   Add important packages to your `requirements.txt` file:
+6. **Required Packages:**
+   
+   - `uv`
+   - `ruff`
+   - `mypy`
    - `pytest`
    - `pytest-cov`
-   - `black`
-   - `pylint`
-   - `ipython`
    - `invoke`
 
-7. **Invoke Tasks:**
-   Define the necessary steps in your `tasks.py` to automate package installation, testing, and linting.
-
-8. **Run Tasks and Debug:**
+7. **Run Tasks and Debug:**
    Execute the following commands:
-   - Install packages and update pip: `invoke install`
-   - Test and check coverage: `invoke test`
-   - Format the code: `invoke design`
-   - Lint the code: `invoke lint`
+   - Install packages and update pip: `uv run invoke manage-dependency`
+   - Test and check coverage: `uv run invoke run-tests`
+   - Format and Lint the code: `uv run invoke type-hints-check`
+   - Type checks: `uv run invoke lint-and-format-code`
+   - Run all the above: `uv run invke build`
 
-9. **Push to Repository:**
+8. **Push to Repository:**
    - Check staged files: `git status`
    - Add files to the staging area: `git add *` (or selectively with `git add <file_name>`)
    - Commit with a descriptive message: `git commit -m "<message>"`
    - Push to your repository: `git push`
 
-10. **Continuous Integration (CI) Pipeline:**
+9. **Continuous Integration (CI) Pipeline:**
+    
     Set up a GitHub Actions workflow to create an automated pipeline triggered by pushes and pulls.
+
 
 [![CI Pipeline](https://github.com/0Mr-Panda0/Python-Template-Project/actions/workflows/main.yaml/badge.svg)](https://github.com/0Mr-Panda0/Python-Template-Project/actions/workflows/main.yaml)

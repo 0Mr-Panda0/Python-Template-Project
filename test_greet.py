@@ -1,4 +1,4 @@
-from greetings import hello
+from greetings.greet import hello
 
 
 def test_greetings():
