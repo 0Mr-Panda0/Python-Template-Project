@@ -11,24 +11,26 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Install the latest version of uv
-      uses: astral-sh/setup-uv@v6
-      with:
-        enable-cache: true
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
 
-    - name: Install dependencies
-      run: uv run invoke manage-dependency
+      - name: Install just
+        uses: extractions/setup-just@v2
 
-    - name: Lint and format with ruff
-      run: uv run invoke lint-and-format-code
+      - name: Install dependencies
+        run: just sync
 
-    - name: Run type checks with mypy
-      run: uv run invoke type-hints-check
+      - name: Lint and format with ruff
+        run: just lint
 
-    - name: Run tests with pytest
-      run: uv run invoke run-tests
+      - name: Run type checks with mypy
+        run: just typecheck
+
+      - name: Run tests with pytest
+        run: just test
