@@ -15,10 +15,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install the latest version of uv
+      - name: Install uv
         uses: astral-sh/setup-uv@v6
         with:
           enable-cache: true
+
+      - name: Install ruff
+        uses: astral-sh/ruff-action@v3
+        with:
+          args: "--version"
+
+      - name: Install ty
+        run: uv tool install ty@latest
 
       - name: Install just
         uses: extractions/setup-just@v2
@@ -29,7 +37,7 @@ jobs:
       - name: Lint and format with ruff
         run: just lint
 
-      - name: Run type checks with mypy
+      - name: Run type checks with ty
         run: just typecheck
 
       - name: Run tests with pytest

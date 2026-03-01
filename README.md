@@ -32,7 +32,7 @@ This repository serves as a template for Python projects. It provides a structur
    
    - `uv`
    - `ruff`
-   - `mypy`
+   - `ty`
    - `pytest`
    - `pytest-cov`
    - `invoke`
@@ -43,7 +43,7 @@ This repository serves as a template for Python projects. It provides a structur
    - Test and check coverage: `uv run invoke run-tests`
    - Format and Lint the code: `uv run invoke type-hints-check`
    - Type checks: `uv run invoke lint-and-format-code`
-   - Run all the above: `uv run invke build`
+   - Run all the above: `uv run invoke build`
 
 8. **Push to Repository:**
    - Check staged files: `git status`
