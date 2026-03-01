@@ -1,59 +1,97 @@
-# Python-Template-Project
-
-This repository serves as a template for Python projects. It provides a structured approach to setting up your project, including virtual environments, testing, and automation.
-
 ## Getting Started
 
-1. **Installing uv for python project management:**
-   ```
-   winget install --id=astral-sh.uv  -e
-   ```
+### NixOS Users
 
-2. **Create a Codespace:**
-   Set up a new codespace for your project by
-   ```
-   uv init <name_of_project>
-   ```
+1. Clone the repository:
+```bash
+   git clone https://github.com/0Mr-Panda0/Python-Template-Project
+   cd Python-Template-Project
+```
 
-3. **Adding packages to the project:**
-   In the terminal, run the following command:
+2. Enable flakes in your `configuration.nix` if you haven't:
+```nix
+   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+```
 
-   ```bash
-   uv add <package_name>
-   ```
+3. Activate the dev environment:
+```bash
+   nix develop
+```
 
-4. **Write Your Code:**
-   Develop your project code within the virtual environment.
+4. Or use direnv for automatic activation:
+```bash
+   echo "use flake" > .envrc
+   direnv allow
+```
 
-5. **Add Testing Code:**
-   Write your testing code to ensure code quality.
+5. Install dependencies:
+```bash
+   just sync
+```
 
-6. **Required Packages:**
-   
-   - `uv`
-   - `ruff`
-   - `ty`
-   - `pytest`
-   - `pytest-cov`
-   - `invoke`
+### General Users (Non-NixOS)
 
-7. **Run Tasks and Debug:**
-   Execute the following commands:
-   - Install packages and update pip: `uv run invoke manage-dependency`
-   - Test and check coverage: `uv run invoke run-tests`
-   - Format and Lint the code: `uv run invoke type-hints-check`
-   - Type checks: `uv run invoke lint-and-format-code`
-   - Run all the above: `uv run invoke build`
+1. Clone the repository:
+```bash
+   git clone https://github.com/0Mr-Panda0/Python-Template-Project
+   cd Python-Template-Project
+```
 
-8. **Push to Repository:**
-   - Check staged files: `git status`
-   - Add files to the staging area: `git add *` (or selectively with `git add <file_name>`)
-   - Commit with a descriptive message: `git commit -m "<message>"`
-   - Push to your repository: `git push`
+2. Install uv:
+```bash
+   winget install --id=astral-sh.uv -e  # Windows
+   curl -LsSf https://astral.sh/uv/install.sh | sh  # macOS/Linux
+```
 
-9. **Continuous Integration (CI) Pipeline:**
-    
-    Set up a GitHub Actions workflow to create an automated pipeline triggered by pushes and pulls.
+3. Install just:
+```bash
+   winget install Casey.Just  # Windows
+   brew install just           # macOS
+```
 
+4. Install dependencies:
+```bash
+   just sync
+```
+
+## Required Tools
+
+|     Tool     |                Purpose             |
+| ------------ | ---------------------------------- |
+| `uv`         | Python package and project manager |
+| `ruff`       | Linter and formatter               |
+| `ty`         | Type checker                       |
+| `just`       | Task runner                        |
+| `pytest`     | Testing framework                  |
+| `pytest-cov` | Test coverage reports              |
+
+## Justfile Commands
+
+| Command              | Description                      |
+| -------------------- | -------------------------------- |
+| `just`               | Runs everything (default: build) |
+| `just sync`          | Install and sync dependencies    |
+| `just lint`          | Lint and format code with ruff   |
+| `just typecheck`     | Run type checks with ty          |
+| `just test`          | Run tests with pytest            |
+| `just build`         | Run all of the above in order    |
+| `just clean`         | Remove cache and build artifacts |
+| `just add <package>` | Add a new dependency             |
+
+## CI Pipeline
+
+This project uses GitHub Actions for continuous integration. The pipeline is triggered on every push and pull request to `main` and runs the following steps in order:
+
+- Dependency installation via `just sync`
+- Linting and formatting via `just lint`
+- Type checking via `just typecheck`
+- Tests via `just test`
+
+Tools used in CI: `uv`, `ruff`, `ty`, and `just` — each installed via their official GitHub Actions or uv tooling.
+
+## Notes
+
+- `.direnv` and `.venv` are excluded from version control
+- `flake.lock` and `uv.lock` are committed intentionally for reproducibility
 
 [![CI Pipeline](https://github.com/0Mr-Panda0/Python-Template-Project/actions/workflows/main.yaml/badge.svg)](https://github.com/0Mr-Panda0/Python-Template-Project/actions/workflows/main.yaml)
