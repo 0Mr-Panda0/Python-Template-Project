@@ -1,55 +1,58 @@
+# Python Template Project
+
+This is a modern Python project template featuring rapid environment provisioning, strict linting, type-checking, and seamless integration for both Nix and non-Nix users.
+
+[![CI Pipeline](https://github.com/0Mr-Panda0/Python-Template-Project/actions/workflows/main.yaml/badge.svg)](https://github.com/0Mr-Panda0/Python-Template-Project/actions/workflows/main.yaml)
+
+---
+
 ## Getting Started
 
-### NixOS Users
+### Nix / NixOS Users
 
-1. Clone the repository:
+1. **Clone the repository:**
 ```bash
    git clone https://github.com/0Mr-Panda0/Python-Template-Project
    cd Python-Template-Project
 ```
 
-2. Enable flakes in your `configuration.nix` if you haven't:
+2. **Enable experimental features in your `configuration.nix` (if you haven't already):**
 ```nix
-   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+nix.settings.experimental-features = [ "nix-command" "flakes" ];
 ```
 
-3. Activate the dev environment:
+3. **Activate the developer environment:**
 ```bash
-   nix develop
+devenv shell
 ```
 
-4. Or use direnv for automatic activation:
+4. **Optional: Configure `direnv` for automatic activation when entering the project directory:**
 ```bash
-   echo "use flake" > .envrc
+echo "use devenv" > .envrc
    direnv allow
-```
-
-5. Install dependencies:
-```bash
-   just sync
 ```
 
 ### General Users (Non-NixOS)
 
-1. Clone the repository:
+1. **Clone the repository:**
 ```bash
    git clone https://github.com/0Mr-Panda0/Python-Template-Project
    cd Python-Template-Project
 ```
 
-2. Install uv:
+2. **Install uv:**
 ```bash
    winget install --id=astral-sh.uv -e  # Windows
    curl -LsSf https://astral.sh/uv/install.sh | sh  # macOS/Linux
 ```
 
-3. Install just:
+3. **Install just:**
 ```bash
    winget install Casey.Just  # Windows
    brew install just           # macOS
 ```
 
-4. Install dependencies:
+4. **Install dependencies:**
 ```bash
    just sync
 ```
@@ -75,8 +78,6 @@
 | `just typecheck`     | Run type checks with ty          |
 | `just test`          | Run tests with pytest            |
 | `just build`         | Run all of the above in order    |
-| `just clean`         | Remove cache and build artifacts |
-| `just add <package>` | Add a new dependency             |
 
 ## CI Pipeline
 
@@ -91,7 +92,5 @@ Tools used in CI: `uv`, `ruff`, `ty`, and `just` — each installed via their of
 
 ## Notes
 
-- `.direnv` and `.venv` are excluded from version control
-- `flake.lock` and `uv.lock` are committed intentionally for reproducibility
-
-[![CI Pipeline](https://github.com/0Mr-Panda0/Python-Template-Project/actions/workflows/main.yaml/badge.svg)](https://github.com/0Mr-Panda0/Python-Template-Project/actions/workflows/main.yaml)
+- `.direnv`, `.devenv`, and `.venv` are intentionally excluded from version control.
+- `devenv.lock` and `uv.lock` are tracked in Git to guarantee strict environment reproducibility across machines.
