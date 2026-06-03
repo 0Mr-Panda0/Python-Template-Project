@@ -46,16 +46,11 @@ echo "use devenv" > .envrc
    curl -LsSf https://astral.sh/uv/install.sh | sh  # macOS/Linux
 ```
 
-3. **Install just:**
+3. **Install and sync dependencies:**
 ```bash
-   winget install Casey.Just  # Windows
-   brew install just           # macOS
+   uv sync
 ```
 
-4. **Install dependencies:**
-```bash
-   just sync
-```
 
 ## Required Tools
 
@@ -64,31 +59,34 @@ echo "use devenv" > .envrc
 | `uv`         | Python package and project manager |
 | `ruff`       | Linter and formatter               |
 | `ty`         | Type checker                       |
-| `just`       | Task runner                        |
 | `pytest`     | Testing framework                  |
 | `pytest-cov` | Test coverage reports              |
 
-## Justfile Commands
+## Devenv Commands (Nix / NixOS Users)
 
-| Command              | Description                      |
-| -------------------- | -------------------------------- |
-| `just`               | Runs everything (default: build) |
-| `just sync`          | Install and sync dependencies    |
-| `just lint`          | Lint and format code with ruff   |
-| `just typecheck`     | Run type checks with ty          |
-| `just test`          | Run tests with pytest            |
-| `just build`         | Run all of the above in order    |
+| Command                  | Description                      |
+| ------------------------ | -------------------------------- |
+| `devenv shell lint`      | Lint and format code with ruff   |
+| `devenv shell typecheck` | Run type checks with ty          |
+| `devenv shell test`      | Run tests with pytest            |
+
+## Normal Commands
+
+| Command                                                                       | Description                      |
+| ----------------------------------------------------------------------------- | -------------------------------- |
+| `uvx run ruff check . && uvx run ruff check --fix . && uvx run ruff format .` | Lint and format code with ruff   |
+| `uvx run ty check .`                                                          | Run type checks with ty          |
+| `uvx run python -m pytest -vv --cov=greetings test_greet.py`                  | Run tests with pytest            |
 
 ## CI Pipeline
 
 This project uses GitHub Actions for continuous integration. The pipeline is triggered on every push and pull request to `main` and runs the following steps in order:
 
-- Dependency installation via `just sync`
-- Linting and formatting via `just lint`
-- Type checking via `just typecheck`
-- Tests via `just test`
+- Linting and formatting via `devenv shell lint`
+- Type checking via `devenv shell typecheck`
+- Tests via `devenv shell test`
 
-Tools used in CI: `uv`, `ruff`, `ty`, and `just` — each installed via their official GitHub Actions or uv tooling.
+Tools used in CI: `uv`, `ruff` and `ty` — each installed via their official GitHub Actions or uv tooling.
 
 ## Notes
 
