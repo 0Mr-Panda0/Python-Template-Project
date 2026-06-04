@@ -22,4 +22,9 @@
     typecheck.exec = "uv run ty check .";
     test.exec = "uv run python -m pytest -vv --cov=greetings test_greet.py";
   };
+
+  pre-commit.hooks = {
+    ruff.enable = true;
+    ruff-format.enable = true;
+  };
 }

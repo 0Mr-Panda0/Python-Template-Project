@@ -4,7 +4,26 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = [
-    "pytest>=9.0.2",
-    "pytest-cov>=7.0.0",
+dependencies = []
+
+[dependency-groups]
+dev = [
+  "pytest>=9.0.2",
+  "pytest-cov>=7.0.0",
 ]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.pytest.ini_options]
+addopts = "-vv --cov=greetings"
+testpaths = ["test_greet.py"]
