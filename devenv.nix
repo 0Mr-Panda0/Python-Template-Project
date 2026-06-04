@@ -23,7 +23,7 @@
     test.exec = "uv run python -m pytest -vv --cov=greetings test_greet.py";
   };
 
-  pre-commit.hooks = {
+  git-hooks.hooks = {
     ruff.enable = true;
     ruff-format.enable = true;
   };
