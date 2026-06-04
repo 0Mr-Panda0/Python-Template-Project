@@ -8,6 +8,10 @@ dependencies = []
 
 [dependency-groups]
 dev = [
+    { include-group = "test" },
+]
+
+test = [
   "pytest>=9.0.2",
   "pytest-cov>=7.0.0",
 ]
@@ -27,3 +31,5 @@ indent-style = "space"
 [tool.pytest.ini_options]
 addopts = "-vv --cov=greetings"
 testpaths = ["test_greet.py"]
+
+[tool.ty]
