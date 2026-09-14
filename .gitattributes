@@ -1,0 +1,10 @@
+# Enforce LF line endings across all platforms (including Windows runners)
+* text=auto eol=lf
+*.py text eol=lf
+*.toml text eol=lf
+*.nix text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+*.lock text eol=lf
+

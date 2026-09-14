@@ -69,7 +69,13 @@ instance/
 .scrapy
 
 # Sphinx documentation
+# Documentation
 docs/_build/
+docs_build/
+site/
+
+# Coverage
+lcov.info
 
 # PyBuilder
 .pybuilder/

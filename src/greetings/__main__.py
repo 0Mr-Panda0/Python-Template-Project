@@ -1,4 +1,4 @@
-"""Convenience runner for greetings CLI."""
+"""Entry point for executing greetings as a module."""
 
 import sys
 

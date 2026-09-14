@@ -1,0 +1,45 @@
+# Copier configuration for Python Template Project
+_min_copier_version: "9.0.0"
+
+_exclude:
+  - ".git"
+  - ".devenv"
+  - ".direnv"
+  - ".venv"
+  - "dist"
+  - "build"
+  - ".pytest_cache"
+  - ".ruff_cache"
+  - "htmlcov"
+  - "docs_build"
+
+project_name:
+  type: str
+  help: "Project distribution name (e.g. my-awesome-project):"
+  default: "my-python-project"
+
+package_name:
+  type: str
+  help: "Python package import name (e.g. my_awesome_project):"
+  default: "my_python_project"
+
+description:
+  type: str
+  help: "Project description:"
+  default: "A modern Python project built with uv and Devenv."
+
+author_name:
+  type: str
+  help: "Author full name:"
+  default: "Developer"
+
+author_email:
+  type: str
+  help: "Author email:"
+  default: "developer@example.com"
+
+github_user:
+  type: str
+  help: "GitHub username or organization:"
+  default: "username"
+
