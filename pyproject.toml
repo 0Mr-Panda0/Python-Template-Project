@@ -50,7 +50,7 @@ lint = [
 ]
 
 typecheck = [
-    "ty>=0.0.80",
+    "ty>=0.0.92",
 ]
 
 test = [
