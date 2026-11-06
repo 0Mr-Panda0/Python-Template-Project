@@ -46,7 +46,7 @@ jobs:
         run: uv run pdoc src/greetings -o docs_build
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
         with:
           enablement: true
 
